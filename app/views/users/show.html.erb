@@ -2,6 +2,11 @@
   <!-- Card header -->
   <div class="card-header">
     <h2 class="mb-0">プロフィール</h2>
+    <% if current_user.following?(@user) %>
+    <%= link_to 'フォローを外す', user_relationships_path(@user.id), method: :delete, class: "btn-sm btn-danger" %>
+    <% else %>
+    <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn-sm btn-success" %>
+    <% end %>
   </div>
   <!-- Card body -->
   <div class="card-body">
